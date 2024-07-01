@@ -1,0 +1,52 @@
+[[language]]
+name = "python"
+roots = ["pyproject.toml"]
+formatter = { command = "black", args = ["--quiet", "-"] }
+auto-format = true
+rulers = [89]
+language-servers = [
+  # { name = "pyright", except-features = ["diagnostics"] },
+  { name = "pyright", except-features = [] },
+  # { name = "ruff-lsp" },
+]
+
+[language-server.pyright]
+command = "pyright-langserver"
+args = ["--stdio"]
+config = {}
+
+[language-server.ruff-lsp]
+command = "ruff-lsp"
+args = []
+config = {}
+
+[[language]]
+name = "rust"
+scope = "source.rs"
+
+# [language.debugger]
+# command = "codelldb"
+# name = "codelldb"
+# port-arg = "--port {}"
+# transport = "tcp"
+
+# [[language.debugger.templates]]
+# name = "binary"
+# request = "launch"
+# [[language.debugger.templates.completion]]
+# completion = "filename"
+# name = "binary"
+
+# [language.debugger.templates.args]
+# program = "{0}"
+# runInTerminal = true
+
+[[language]]
+name = "toml"
+scope = "source.toml"
+formatter = { command = "dprint", args = ["fmt", "--stdin", "toml"] }
+
+[[language]]
+name = "markdown"
+scope = "source.md"
+formatter = { command = "dprint", args = ["fmt", "--stdin", "md"] }

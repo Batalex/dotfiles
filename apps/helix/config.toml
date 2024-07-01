@@ -1,0 +1,33 @@
+theme = "catppuccin_macchiato"
+
+[editor]
+true-color = true
+auto-save = true
+auto-format = true
+line-number = "relative"
+bufferline = "multiple"
+
+[editor.cursor-shape]
+insert = "bar"
+select = "underline"
+
+[editor.soft-wrap]
+enable = true
+
+[editor.statusline]
+left = ["mode", "spinner", "version-control"]
+center = ["file-name", "diagnostics"]
+right = ["selections", "position"]
+
+[keys.normal]
+tab = ":buffer-next"
+S-tab = ":buffer-previous"
+C-up = "expand_selection"
+C-down = "shrink_selection"
+C-left = "select_prev_sibling"
+C-right = "select_next_sibling"
+d = "delete_selection_noyank"
+A-d = "delete_selection"
+
+[editor.file-picker]
+hidden = false
