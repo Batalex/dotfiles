@@ -29,9 +29,9 @@
     mba-pkgs-stable = nixpkgs-stable.legacyPackages.aarch64-darwin;
   in {
     homeConfigurations = {
-      macbook = home-manager.lib.homeManagerConfiguration {
+      mba = home-manager.lib.homeManagerConfiguration {
         pkgs = mba-pkgs;
-        modules = [./home_common.nix home/mba.nix];
+        modules = [./home.nix home/mba.nix];
         extraSpecialArgs = {
           inherit mba-pkgs-stable;
         };
@@ -39,7 +39,7 @@
       frame = home-manager.lib.homeManagerConfiguration {
         pkgs = pkgs;
         overlays = [nixgl.overlay];
-        modules = [./home_common.nix home/frame.nix];
+        modules = [./home.nix home/frame.nix];
       };
     };
   };

@@ -6,12 +6,12 @@
   home.stateVersion = "23.11";
 
   home.packages = with pkgs; [
-    zsh
     yq
 
     tldr
-    typst
     btop
+    dprint
+    vale
 
     pipx
     pyright
@@ -21,6 +21,7 @@
   ];
 
   home.file = {
+    "dprint.json".source = ./apps/dprint/dprint.json;
   };
 
   home.sessionVariables = {
