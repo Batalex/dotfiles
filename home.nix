@@ -14,7 +14,6 @@
     btop
 
     pipx
-    pyenv
     pyright
     ruff-lsp
 
@@ -84,4 +83,9 @@
   programs.fzf.enable = true;
 
   programs.btop.enable = true;
+
+  programs.pyenv = {
+    enable = true;
+    enableZshIntegration = true;
+  };
 }
