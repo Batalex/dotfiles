@@ -33,7 +33,7 @@
         pkgs = mba-pkgs;
         modules = [./home.nix home/mba.nix];
         extraSpecialArgs = {
-          inherit mba-pkgs-stable;
+          pkgs-stable = mba-pkgs-stable;
         };
       };
       frame = home-manager.lib.homeManagerConfiguration {

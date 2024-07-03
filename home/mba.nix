@@ -1,7 +1,7 @@
 {
   config,
   pkgs,
-  mba-pkgs-stable,
+  pkgs-stable,
   lib,
   ...
 }: {
