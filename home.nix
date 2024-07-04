@@ -22,10 +22,14 @@
 
   home.file = {
     "dprint.json".source = ./apps/dprint/dprint.json;
+    ".config/zellij/config.kdl".source = ./apps/zellij/config.kdl;
+    ".config/zellij/themes/catpuccin.kdl".source = ./apps/zellij/themes/catppuccin.kdl;
+    ".config/vale/.vale.ini".source = ./apps/vale/.vale.ini;
   };
 
   home.sessionVariables = {
     EDITOR = "hx";
+    VALE_CONFIG_PATH = "~/.config/vale/.vale.ini";
   };
 
   programs.home-manager.enable = true;
@@ -50,6 +54,13 @@
       co = "checkout";
       ci = "commit";
     };
+    ignores = [
+      ".tox"
+      ".nox"
+      ".venv"
+      ".DS_Store"
+      ".direnv"
+    ];
   };
 
   programs.starship = {

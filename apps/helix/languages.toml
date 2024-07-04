@@ -35,6 +35,6 @@ scope = "source.md"
 formatter = { command = "dprint", args = ["fmt", "--stdin", "md"] }
 
 [[language]]
-name = "js"
+name = "javascript"
 scope = "source.js"
 formatter = { command = "dprint", args = ["fmt", "--stdin", "js"] }
