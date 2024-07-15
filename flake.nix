@@ -22,8 +22,11 @@
     nixgl,
     ...
   }: let
-    pkgs = nixpkgs.legacyPackages.x86-64-linux;
-    pkgs-stable = nixpkgs-stable.legacyPackages.x86-64-linux;
+    pkgs_with_nixgl = import nixpkgs {
+      system = "x86_64-linux";
+      overlays = [nixgl.overlay];
+    };
+    pkgs-stable = nixpkgs-stable.legacyPackages.x86_64-linux;
 
     mba-pkgs = nixpkgs.legacyPackages.aarch64-darwin;
     mba-pkgs-stable = nixpkgs-stable.legacyPackages.aarch64-darwin;
@@ -37,9 +40,11 @@
         };
       };
       frame = home-manager.lib.homeManagerConfiguration {
-        pkgs = pkgs;
-        overlays = [nixgl.overlay];
+        pkgs = pkgs_with_nixgl;
         modules = [./home.nix home/frame.nix];
+        extraSpecialArgs = {
+          inherit pkgs-stable;
+        };
       };
     };
   };

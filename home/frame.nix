@@ -1,7 +1,7 @@
 {
   config,
   pkgs,
-  nixgl,
+  pkgs-stable,
   lib,
   ...
 }: let
@@ -18,9 +18,27 @@
       done
     '';
 in {
+  home.username = "alex";
+  home.homeDirectory = "/home/alex";
+  xdg.enable = true;
+  xdg.mime.enable = true;
+  targets.genericLinux.enable = true;
+
   programs.alacritty = {
     enable = true;
     settings = {};
     package = nixGLWrap pkgs.alacritty;
   };
+
+  programs.zsh = {
+    shellAliases = {
+      jam = "juju add-model";
+      jdm = "juju destroy-model --force --no-wait --destroy-storage";
+    };
+  };
+
+  home.packages = with pkgs; [
+    wl-clipboard
+    (nixGLWrap firefox)
+  ];
 }
