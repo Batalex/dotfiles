@@ -31,6 +31,7 @@
     EDITOR = "hx";
     VALE_CONFIG_PATH = "~/.config/vale/.vale.ini";
   };
+  home.sessionPath = ["$HOME/.local/bin"];
 
   programs.home-manager.enable = true;
 
