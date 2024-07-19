@@ -39,7 +39,6 @@ in {
 
   home.packages = with pkgs; [
     wl-clipboard
-    python312Packages.tox
 
     (nixGLWrap firefox)
   ];

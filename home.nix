@@ -2,11 +2,16 @@
   config,
   pkgs,
   ...
-}: {
+}: let
+  dag = config.lib.dag;
+in {
   home.stateVersion = "23.11";
 
   home.packages = with pkgs; [
+    nvd
     yq
+    delta
+    bat
 
     tldr
     btop
@@ -32,11 +37,15 @@
     VALE_CONFIG_PATH = "~/.config/vale/.vale.ini";
   };
   home.sessionPath = ["$HOME/.local/bin"];
+  home.activation.report-changes = dag.entryAnywhere ''
+    ${pkgs.nvd}/bin/nvd diff $oldGenPath $newGenPath
+  '';
 
   programs.home-manager.enable = true;
 
   programs.zsh = {
     enable = true;
+    autocd = true;
     shellAliases = {
       zj = "zellij";
       lgit = "lazygit";
