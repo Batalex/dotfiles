@@ -8,8 +8,6 @@
   home.username = "abatisse";
   home.homeDirectory = "/Users/abatisse";
 
-  programs.alacritty.enable = true;
-
   home.packages = [
     pkgs.typst
     # mba-pkgs-stable.calibre

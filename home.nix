@@ -116,6 +116,8 @@ in {
     enableZshIntegration = true;
   };
 
+  programs.alacritty.enable = true;
+
   programs.kitty = {
     enable = true;
     theme = "Catppuccin-Macchiato";
