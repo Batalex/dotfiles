@@ -24,11 +24,8 @@ in {
   xdg.mime.enable = true;
   targets.genericLinux.enable = true;
 
-  programs.alacritty = {
-    enable = true;
-    settings = {};
-    package = nixGLWrap pkgs.alacritty;
-  };
+  programs.alacritty.package = nixGLWrap pkgs.alacritty;
+  programs.kitty.package = nixGLWrap pkgs.kitty;
 
   programs.zsh = {
     shellAliases = {

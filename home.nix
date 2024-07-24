@@ -98,6 +98,11 @@ in {
     enableZshIntegration = true;
   };
 
+  programs.yazi = {
+    enable = true;
+    enableZshIntegration = true;
+  };
+
   programs.lazygit.enable = true;
 
   programs.ripgrep.enable = true;
@@ -109,5 +114,16 @@ in {
   programs.pyenv = {
     enable = true;
     enableZshIntegration = true;
+  };
+
+  programs.kitty = {
+    enable = true;
+    theme = "Catppuccin-Macchiato";
+    font.name = "CommitMono Nerd Font";
+    font.size = 16;
+    shellIntegration.enableZshIntegration = true;
+    settings = {
+      window_padding_width = 4;
+    };
   };
 }
