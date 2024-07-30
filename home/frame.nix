@@ -25,7 +25,6 @@ in {
   targets.genericLinux.enable = true;
 
   programs.alacritty.package = nixGLWrap pkgs.alacritty;
-  programs.kitty.package = nixGLWrap pkgs.kitty;
 
   programs.zsh = {
     shellAliases = {

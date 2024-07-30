@@ -117,15 +117,4 @@ in {
   };
 
   programs.alacritty.enable = true;
-
-  programs.kitty = {
-    enable = true;
-    theme = "Catppuccin-Macchiato";
-    font.name = "CommitMono Nerd Font";
-    font.size = 16;
-    shellIntegration.enableZshIntegration = true;
-    settings = {
-      window_padding_width = 4;
-    };
-  };
 }
