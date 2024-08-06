@@ -7,24 +7,6 @@
 in {
   home.stateVersion = "23.11";
 
-  home.packages = with pkgs; [
-    nvd
-    yq
-    delta
-    bat
-
-    tldr
-    btop
-    dprint
-    vale
-
-    pipx
-    pyright
-    ruff-lsp
-
-    (nerdfonts.override {fonts = ["CommitMono"];})
-  ];
-
   home.file = {
     "dprint.json".source = ./apps/dprint/dprint.json;
     ".config/zellij/config.kdl".source = ./apps/zellij/config.kdl;
@@ -42,6 +24,8 @@ in {
   '';
 
   programs.home-manager.enable = true;
+
+  programs.alacritty.enable = true;
 
   programs.zsh = {
     enable = true;
@@ -116,5 +100,26 @@ in {
     enableZshIntegration = true;
   };
 
-  programs.alacritty.enable = true;
+  # packages not managed by home-manager options
+  home.packages = with pkgs; [
+    # tooling
+    yq
+    delta
+    bat
+    tldr
+    btop
+    dprint
+    vale
+
+    # python
+    pipx
+    pyright
+
+    # nix
+    nvd
+    nixd
+    alejandra
+
+    (nerdfonts.override {fonts = ["CommitMono"];})
+  ];
 }
