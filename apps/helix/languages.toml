@@ -1,3 +1,18 @@
+[language-server.pyright]
+command = "pyright-langserver"
+args = ["--stdio"]
+config = {}
+
+[language-server.vale]
+command = "vale-ls"
+args = []
+config = {}
+
+[language-server.nixd]
+command = "nixd"
+args = []
+config = {}
+
 [[language]]
 name = "python"
 roots = ["pyproject.toml"]
@@ -7,22 +22,8 @@ rulers = [89]
 language-servers = [
   # { name = "pyright", except-features = ["diagnostics"] },
   { name = "pyright", except-features = [] },
-  # { name = "ruff-lsp" },
+  { name = "vale", except-features = [] },
 ]
-
-[language-server.pyright]
-command = "pyright-langserver"
-args = ["--stdio"]
-config = {}
-
-[language-server.ruff-lsp]
-command = "ruff-lsp"
-args = []
-config = {}
-
-[[language]]
-name = "rust"
-scope = "source.rs"
 
 [[language]]
 name = "toml"
@@ -33,8 +34,20 @@ formatter = { command = "dprint", args = ["fmt", "--stdin", "toml"] }
 name = "markdown"
 scope = "source.md"
 formatter = { command = "dprint", args = ["fmt", "--stdin", "md"] }
+language-servers = [
+  { name = "vale", except-features = [] },
+]
 
 [[language]]
 name = "javascript"
 scope = "source.js"
 formatter = { command = "dprint", args = ["fmt", "--stdin", "js"] }
+
+[[language]]
+name = "nix"
+scope = "source.nix"
+formatter = { command = "alejandra", args = ["--quiet", "-"] }
+auto-format = true
+language-servers = [
+  { name = "nixd", except-features = [] },
+]

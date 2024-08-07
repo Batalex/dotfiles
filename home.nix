@@ -110,6 +110,7 @@ in {
     btop
     dprint
     vale
+    vale-ls
 
     # python
     pipx
