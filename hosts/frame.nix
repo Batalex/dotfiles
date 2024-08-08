@@ -24,6 +24,8 @@ in {
   xdg.mime.enable = true;
   targets.genericLinux.enable = true;
 
+  imports = [../home];
+
   programs.alacritty.package = nixGLWrap pkgs.alacritty;
 
   programs.zsh = {

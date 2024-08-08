@@ -34,14 +34,14 @@
     homeConfigurations = {
       mba = home-manager.lib.homeManagerConfiguration {
         pkgs = mba-pkgs;
-        modules = [./home.nix home/mba.nix];
+        modules = [hosts/mba.nix];
         extraSpecialArgs = {
           pkgs-stable = mba-pkgs-stable;
         };
       };
       frame = home-manager.lib.homeManagerConfiguration {
         pkgs = pkgs_with_nixgl;
-        modules = [./home.nix home/frame.nix];
+        modules = [hosts/frame.nix];
         extraSpecialArgs = {
           inherit pkgs-stable;
         };
