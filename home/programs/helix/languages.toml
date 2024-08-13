@@ -22,7 +22,7 @@ rulers = [89]
 language-servers = [
   # { name = "pyright", except-features = ["diagnostics"] },
   { name = "pyright", except-features = [] },
-  { name = "vale", except-features = [] },
+  # { name = "vale", except-features = [] },
 ]
 
 [[language]]
