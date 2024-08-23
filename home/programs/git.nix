@@ -18,6 +18,12 @@
       ".DS_Store"
       ".direnv"
     ];
+    delta = {
+      enable = true;
+      options = {
+        dark = true;
+      };
+    };
   };
 
   programs.lazygit.enable = true;
