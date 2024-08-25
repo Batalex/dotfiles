@@ -19,6 +19,7 @@
     pipx
     pyright
     python312Packages.nox
+    python312Packages.tox
     black
   ];
   programs.zsh.shellAliases = {
