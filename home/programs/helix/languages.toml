@@ -39,9 +39,16 @@ language-servers = [
 ]
 
 [[language]]
-name = "javascript"
-scope = "source.js"
-formatter = { command = "dprint", args = ["fmt", "--stdin", "js"] }
+name = "json"
+scope = "source.json"
+auto-format = false
+formatter = { command = "dprint", args = ["fmt", "--stdin", "json"] }
+
+[[language]]
+name = "yaml"
+scope = "source.yaml"
+auto-format = false
+formatter = { command = "dprint", args = ["fmt", "--stdin", "yaml"] }
 
 [[language]]
 name = "nix"
