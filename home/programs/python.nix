@@ -13,11 +13,6 @@
 
   programs.poetry = {
     enable = true;
-    settings = {
-      virtualenvs.create = true;
-      virtualenvs.in-project = true;
-      warnings.export = false;
-    };
   };
 
   home.packages = with pkgs; [
