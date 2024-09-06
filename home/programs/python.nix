@@ -19,9 +19,9 @@
     pipx
     pyright
     python312Packages.nox
-    python312Packages.tox
     black
     uv
+    ruff
   ];
   programs.zsh.shellAliases = {
     ae = "source venv/bin/activate";
