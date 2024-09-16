@@ -12,6 +12,7 @@ in {
   '';
 
   programs.home-manager.enable = true;
+  news.display = "silent";
 
   home.packages = with pkgs; [
     (nerdfonts.override {fonts = ["CommitMono"];})
