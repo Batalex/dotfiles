@@ -38,6 +38,8 @@ in {
   home.packages = with pkgs; [
     wl-clipboard
 
+    obsidian
+
     (nixGLWrap firefox)
   ];
 }

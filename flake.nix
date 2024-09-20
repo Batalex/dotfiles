@@ -25,6 +25,7 @@
     pkgs_with_nixgl = import nixpkgs {
       system = "x86_64-linux";
       overlays = [nixgl.overlay];
+      config.allowUnfree = true;
     };
     pkgs-stable = nixpkgs-stable.legacyPackages.x86_64-linux;
 

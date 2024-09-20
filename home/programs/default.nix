@@ -31,7 +31,7 @@
 
   programs.fzf.enable = true;
 
-  programs.btop.enable = true;
+  programs.bottom.enable = true;
 
   programs.bat = {
     enable = true;
