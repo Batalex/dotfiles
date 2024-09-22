@@ -29,7 +29,10 @@
     };
     pkgs-stable = nixpkgs-stable.legacyPackages.x86_64-linux;
 
-    mba-pkgs = nixpkgs.legacyPackages.aarch64-darwin;
+    mba-pkgs = import nixpkgs {
+      system = "aarch64-darwin";
+      config.allowUnfree = true;
+    };
     mba-pkgs-stable = nixpkgs-stable.legacyPackages.aarch64-darwin;
   in {
     homeConfigurations = {
