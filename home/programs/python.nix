@@ -6,11 +6,6 @@
 }: {
   home.sessionPath = ["$HOME/.local/bin"];
 
-  programs.pyenv = {
-    enable = true;
-    enableZshIntegration = true;
-  };
-
   programs.poetry = {
     enable = true;
   };
