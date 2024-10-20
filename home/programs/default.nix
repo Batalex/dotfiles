@@ -12,27 +12,6 @@
     ./vale
   ];
 
-  programs.direnv = {
-    enable = true;
-    enableZshIntegration = true;
-  };
-
-  programs.eza = {
-    enable = true;
-    enableZshIntegration = true;
-  };
-
-  programs.yazi = {
-    enable = true;
-    enableZshIntegration = true;
-  };
-
-  programs.ripgrep.enable = true;
-
-  programs.fzf.enable = true;
-
-  programs.bottom.enable = true;
-
   programs.bat = {
     enable = true;
     config = {
@@ -51,8 +30,32 @@
     };
   };
 
+  programs.bottom.enable = true;
+
+  programs.direnv = {
+    enable = true;
+    enableZshIntegration = true;
+  };
+
+  programs.eza = {
+    enable = true;
+    enableZshIntegration = true;
+  };
+
+  programs.fzf.enable = true;
+
+  programs.ripgrep.enable = true;
+
+  programs.ssh.enable = true;
+
+  programs.yazi = {
+    enable = true;
+    enableZshIntegration = true;
+  };
+
   home.packages = with pkgs; [
-    yq
+    age
     tldr
+    yq
   ];
 }

@@ -26,6 +26,7 @@ in {
 
   imports = [../home];
 
+  services.ssh-agent.enable = true;
   programs.alacritty.package = nixGLWrap pkgs.alacritty;
 
   programs.zsh = {
