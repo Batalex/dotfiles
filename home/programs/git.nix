@@ -10,13 +10,14 @@
       fa = "fetch --all --prune";
       co = "checkout";
       ci = "commit";
+      wt = "worktree";
     };
     ignores = [
       ".tox"
       ".nox"
       ".venv"
       ".DS_Store"
-      ".direnv"
+      ".envrc"
     ];
     delta = {
       enable = true;
