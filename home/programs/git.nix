@@ -18,6 +18,7 @@
       ".venv"
       ".DS_Store"
       ".envrc"
+      ".direnv"
     ];
     delta = {
       enable = true;

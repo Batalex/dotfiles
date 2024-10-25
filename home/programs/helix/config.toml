@@ -28,6 +28,7 @@ C-left = "select_prev_sibling"
 C-right = "select_next_sibling"
 d = "delete_selection_noyank"
 A-d = "delete_selection"
+X = "extend_line_above"
 
 [editor.file-picker]
 hidden = false

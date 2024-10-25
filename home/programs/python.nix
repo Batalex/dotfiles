@@ -6,10 +6,6 @@
 }: {
   home.sessionPath = ["$HOME/.local/bin"];
 
-  programs.poetry = {
-    enable = true;
-  };
-
   home.packages = with pkgs; [
     pipx
     pyright
@@ -25,3 +21,5 @@
     pipr = "pip install -r requirements.txt";
   };
 }
+# TODO: Create a uv module to manage tools
+
