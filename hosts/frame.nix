@@ -1,7 +1,5 @@
 {
-  config,
   pkgs,
-  pkgs-stable,
   lib,
   ...
 }: let
@@ -27,12 +25,14 @@ in {
   imports = [../home];
 
   services.ssh-agent.enable = true;
-  programs.alacritty.package = nixGLWrap pkgs.alacritty;
-
-  programs.zsh = {
-    shellAliases = {
-      jam = "juju add-model";
-      jdm = "juju destroy-model --force --no-wait --destroy-storage";
+  programs.alacritty = {
+    package = nixGLWrap pkgs.alacritty;
+    settings = {
+      font.size = 15;
+      window.padding = {
+        x = 6;
+        y = 6;
+      };
     };
   };
 
@@ -40,5 +40,15 @@ in {
     wl-clipboard
 
     (nixGLWrap firefox)
+    mattermost-desktop
   ];
+
+  programs.zsh = {
+    shellAliases = {
+      j = "juju";
+      jam = "juju add-model";
+      jdm = "juju destroy-model --force --no-wait --destroy-storage";
+      jw = "juju status --watch 1s";
+    };
+  };
 }

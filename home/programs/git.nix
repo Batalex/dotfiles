@@ -5,6 +5,14 @@
 }: {
   programs.git = {
     enable = true;
+    userEmail = "alexandre.batisse@hey.com";
+    userName = "Alex Batisse";
+    includes = [
+      {
+        condition = "gitdir:~/work/";
+        contents.user.email = "alex.batisse@canonical.com";
+      }
+    ];
     aliases = {
       st = "status";
       fa = "fetch --all --prune";

@@ -17,7 +17,7 @@ enable = true
 [editor.statusline]
 left = ["mode", "spinner", "version-control"]
 center = ["file-name", "diagnostics"]
-right = ["selections", "position"]
+right = ["selections", "position", "position-percentage"]
 
 [keys.normal]
 tab = ":buffer-next"
