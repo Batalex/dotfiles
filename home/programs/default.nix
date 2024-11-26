@@ -9,6 +9,7 @@
     ./helix
     ./nix.nix
     ./python.nix
+    ./rust.nix
     ./vale
   ];
 
