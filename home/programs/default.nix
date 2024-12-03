@@ -4,12 +4,11 @@
   ...
 }: {
   imports = [
+    ./dev.nix
     ./dprint
     ./git.nix
     ./helix
     ./nix.nix
-    ./python.nix
-    ./rust.nix
     ./vale
   ];
 

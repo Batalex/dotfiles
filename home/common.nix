@@ -15,7 +15,8 @@ in {
   news.display = "silent";
 
   home.packages = with pkgs; [
-    (nerdfonts.override {fonts = ["CommitMono"];})
+    # TODO: Fix access path for alacritty?
+    nerd-fonts.commit-mono
 
     nvd
   ];

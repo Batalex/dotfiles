@@ -1,19 +1,19 @@
-{
-  config,
-  pkgs,
-  lib,
-  ...
-}: {
+{pkgs, ...}: {
   home.sessionPath = ["$HOME/.local/bin"];
 
   home.packages = with pkgs; [
+    # python
     pipx
     pyright
     python312Packages.nox
     black
     uv
     ruff
+
+    # rust
+    rustup
   ];
+
   programs.zsh.shellAliases = {
     ae = "source venv/bin/activate";
     de = "deactivate";

@@ -40,11 +40,11 @@ in {
     wl-clipboard
 
     kubectl
+    awscli
 
     (nixGLWrap firefox)
 
-    # Will enable only NixOS because I don't want the hassle of messing with
-    # AppArmor profiles
+    # Will enable only on NixOS because I don't want the hassle of messing with AppArmor profiles
     # mattermost-desktop
   ];
 
