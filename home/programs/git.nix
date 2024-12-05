@@ -1,8 +1,4 @@
-{
-  config,
-  pkgs,
-  ...
-}: {
+{...}: {
   programs.git = {
     enable = true;
     userEmail = "alexandre.batisse@hey.com";
@@ -33,6 +29,17 @@
       options = {
         dark = true;
       };
+    };
+    extraConfig = {
+      gpg = {
+        format = "ssh";
+        ssh = {
+          allowedSignersFile = "~/.ssh/allowed_signers";
+        };
+      };
+      user.signingKey = "~/.ssh/id_ed25519.pub";
+      commit.gpgSign = true;
+      tag.gpgSign = true;
     };
   };
 
