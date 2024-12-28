@@ -1,8 +1,6 @@
 {
-  config,
   pkgs,
-  pkgs-stable,
-  lib,
+  craft-ls,
   ...
 }: {
   home.username = "abatisse";
@@ -12,7 +10,7 @@
 
   home.packages = [
     pkgs.typst
-    # mba-pkgs-stable.calibre
+    craft-ls.packages.aarch64-darwin.default
   ];
 
   programs.alacritty.settings = {

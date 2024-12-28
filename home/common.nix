@@ -3,6 +3,7 @@
   pkgs,
   ...
 }: let
+  commitmono-typeface = pkgs.callPackage ./packages/fonts/commitmono/default.nix {};
   dag = config.lib.dag;
 in {
   home.stateVersion = "23.11";
@@ -16,6 +17,7 @@ in {
 
   home.packages = with pkgs; [
     # TODO: Fix access path for alacritty?
+    commitmono-typeface
     nerd-fonts.commit-mono
 
     nvd

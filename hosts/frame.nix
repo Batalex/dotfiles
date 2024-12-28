@@ -1,6 +1,8 @@
 {
   pkgs,
   lib,
+  ghostty,
+  craft-ls,
   ...
 }: let
   nixGLWrap = pkg:
@@ -44,6 +46,8 @@ in {
 
     (nixGLWrap firefox)
 
+    ghostty.packages.x86_64-linux.default
+    craft-ls.packages.x86_64-linux.default
     # Will enable only on NixOS because I don't want the hassle of messing with AppArmor profiles
     # mattermost-desktop
   ];

@@ -1,4 +1,6 @@
 {pkgs, ...}: {
+  home.file.".config/ghostty/config".source = ./ghostty_config;
+
   programs.alacritty = {
     enable = true;
     settings = {

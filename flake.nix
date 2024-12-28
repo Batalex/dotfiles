@@ -13,6 +13,13 @@
       url = "github:nix-community/nixGL";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    ghostty = {
+      url = "github:ghostty-org/ghostty";
+    };
+    craft-ls = {
+      url = "https://flakehub.com/f/Batalex/craft-ls/0.1.1.tar.gz";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = {
@@ -20,6 +27,8 @@
     nixpkgs-stable,
     home-manager,
     nixgl,
+    ghostty,
+    craft-ls,
     ...
   }: let
     pkgs_with_nixgl = import nixpkgs {
@@ -41,6 +50,7 @@
         modules = [hosts/mba.nix];
         extraSpecialArgs = {
           pkgs-stable = mba-pkgs-stable;
+          craft-ls = craft-ls;
         };
       };
       frame = home-manager.lib.homeManagerConfiguration {
@@ -48,6 +58,8 @@
         modules = [hosts/frame.nix];
         extraSpecialArgs = {
           inherit pkgs-stable;
+          ghostty = ghostty;
+          craft-ls = craft-ls;
         };
       };
     };
