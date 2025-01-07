@@ -49,6 +49,10 @@ name = "yaml"
 scope = "source.yaml"
 auto-format = false
 formatter = { command = "dprint", args = ["fmt", "--stdin", "yaml"] }
+language-servers = ["craft-ls"]
+
+[language-server.craft-ls]
+command = "craft-ls"
 
 [[language]]
 name = "nix"
