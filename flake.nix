@@ -13,6 +13,9 @@
       url = "github:nix-community/nixGL";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    ghostty = {
+      url = "github:ghostty-org/ghostty";
+    };
     craft-ls = {
       url = "https://flakehub.com/f/Batalex/craft-ls/0.2.0.tar.gz";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -24,6 +27,7 @@
     nixpkgs-stable,
     home-manager,
     nixgl,
+    ghostty,
     craft-ls,
     ...
   }: let
@@ -54,6 +58,7 @@
         modules = [hosts/frame.nix];
         extraSpecialArgs = {
           inherit pkgs-stable;
+          ghostty = ghostty;
           craft-ls = craft-ls;
         };
       };

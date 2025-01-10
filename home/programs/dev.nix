@@ -3,10 +3,8 @@
 
   home.packages = with pkgs; [
     # python
-    pipx
     pyright
     python312Packages.nox
-    black
     uv
     ruff
 

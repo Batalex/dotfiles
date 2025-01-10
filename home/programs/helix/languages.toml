@@ -16,11 +16,10 @@ config = {}
 [[language]]
 name = "python"
 roots = ["pyproject.toml"]
-formatter = { command = "black", args = ["--quiet", "-"] }
+formatter = { command = "ruff", args = ["format", "--quiet", "-"] }
 auto-format = true
 rulers = [89]
 language-servers = [
-  # { name = "pyright", except-features = ["diagnostics"] },
   { name = "pyright", except-features = [] },
   # { name = "vale", except-features = [] },
 ]
