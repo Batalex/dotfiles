@@ -66,5 +66,6 @@
     age
     tldr
     yq
+    viddy
   ];
 }

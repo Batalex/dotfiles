@@ -43,6 +43,8 @@ in {
     kubectl
     awscli
 
+    terraform
+
     (nixGLWrap firefox)
 
     (nixGLWrap ghostty)
@@ -56,7 +58,7 @@ in {
       j = "juju";
       jam = "juju add-model";
       jdm = "juju destroy-model --force --no-wait --destroy-storage";
-      jw = "juju status --watch 1s";
+      jw = "viddy juju status --color";
     };
     initExtra = ''
       ubuntu-vm() {
