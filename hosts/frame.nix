@@ -42,7 +42,7 @@ in {
 
     kubectl
     awscli
-
+    azure-cli
     terraform
 
     (nixGLWrap firefox)
@@ -59,6 +59,7 @@ in {
       jam = "juju add-model";
       jdm = "juju destroy-model --force --no-wait --destroy-storage";
       jw = "viddy juju status --color";
+      tf = "terraform";
     };
     initExtra = ''
       ubuntu-vm() {
