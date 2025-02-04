@@ -16,9 +16,7 @@ in {
   news.display = "silent";
 
   home.packages = with pkgs; [
-    # TODO: Fix access path for alacritty?
     commitmono-typeface
-    nerd-fonts.commit-mono
 
     nvd
   ];

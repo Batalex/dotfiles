@@ -26,21 +26,10 @@ in {
   imports = [../home];
 
   services.ssh-agent.enable = true;
-  programs.alacritty = {
-    package = nixGLWrap pkgs.alacritty;
-    settings = {
-      font.size = 15;
-      window.padding = {
-        x = 6;
-        y = 6;
-      };
-    };
-  };
 
   home.packages = with pkgs; [
     wl-clipboard
 
-    kubectl
     awscli
     azure-cli
     terraform
@@ -49,8 +38,11 @@ in {
 
     (nixGLWrap ghostty)
     craft-ls.packages.x86_64-linux.default
-    # Will enable only on NixOS because I don't want the hassle of messing with AppArmor profiles
-    # mattermost-desktop
+
+    # Package exceptions:
+    # kubectl: should use microk8s.kubectl for now (automatic handling of credentials)
+    # yq: seems that there are some differences between the snap and the nix package.
+    # mattermost-desktop: I don't want the hassle of messing with AppArmor profiles compared to the snap
   ];
 
   programs.zsh = {
@@ -58,7 +50,7 @@ in {
       j = "juju";
       jam = "juju add-model";
       jdm = "juju destroy-model --force --no-wait --destroy-storage";
-      jw = "viddy juju status --color";
+      jw = "watch -c juju status --color";
       tf = "terraform";
     };
     initExtra = ''

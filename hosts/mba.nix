@@ -8,24 +8,9 @@
 
   imports = [../home];
 
-  home.packages = [
-    pkgs.typst
+  home.packages = with pkgs; [
+    typst
+    yq
     craft-ls.packages.aarch64-darwin.default
   ];
-
-  programs.alacritty.settings = {
-    font.size = 16;
-    window.option_as_alt = "OnlyLeft";
-    window.padding = {
-      x = 6;
-      y = 6;
-    };
-    keyboard.bindings = [
-      {
-        key = "N";
-        mods = "Command";
-        action = "CreateNewWindow";
-      }
-    ];
-  };
 }

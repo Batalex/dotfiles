@@ -1,8 +1,4 @@
-{
-  config,
-  pkgs,
-  ...
-}: {
+{pkgs, ...}: {
   imports = [
     ./dev.nix
     ./dprint
@@ -65,7 +61,5 @@
   home.packages = with pkgs; [
     age
     tldr
-    yq
-    viddy
   ];
 }
