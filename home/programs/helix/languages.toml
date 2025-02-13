@@ -61,3 +61,8 @@ auto-format = true
 language-servers = [
   { name = "nixd", except-features = [] },
 ]
+
+[[language]]
+name = "hcl"
+scope = "source.tf"
+formatter = { command = "terraform", args = ["fmt", "-"] }
