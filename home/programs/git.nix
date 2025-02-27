@@ -55,4 +55,6 @@
   programs.zsh.shellAliases = {
     lgit = "lazygit";
   };
+
+  programs.gh.enable = true;
 }
