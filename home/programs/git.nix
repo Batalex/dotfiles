@@ -15,7 +15,7 @@
       co = "checkout";
       ci = "commit";
       wt = "worktree";
-      cp = "cherry-pick";
+      cp = "cherry-pick --signoff";
     };
     ignores = [
       ".tox"
