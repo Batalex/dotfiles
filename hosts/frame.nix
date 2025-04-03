@@ -30,9 +30,12 @@ in {
   home.packages = with pkgs; [
     wl-clipboard
 
-    awscli
-    azure-cli
     terraform
+    kubectl
+
+    awscli
+    eksctl
+    azure-cli
 
     (nixGLWrap firefox)
 
@@ -40,7 +43,6 @@ in {
     craft-ls.packages.x86_64-linux.default
 
     # Package exceptions:
-    # kubectl: should use microk8s.kubectl for now (automatic handling of credentials)
     # yq: seems that there are some differences between the snap and the nix package.
     # mattermost-desktop: I don't want the hassle of messing with AppArmor profiles compared to the snap
   ];

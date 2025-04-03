@@ -14,7 +14,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     craft-ls = {
-      url = "https://flakehub.com/f/Batalex/craft-ls/0.2.1.tar.gz";
+      url = "https://flakehub.com/f/Batalex/craft-ls/0.3.0.tar.gz";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
