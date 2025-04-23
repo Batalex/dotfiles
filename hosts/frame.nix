@@ -55,7 +55,7 @@ in {
       jw = "watch -c juju status --color";
       tf = "terraform";
     };
-    initExtra = ''
+    initContent = ''
       ubuntu-vm() {
         BASE="''${BASE:-noble}"
         VM_NAME="''${VM_NAME:-ubuntu-''${BASE}-$(head -c 2 /dev/urandom | xxd -p -c 32)}"

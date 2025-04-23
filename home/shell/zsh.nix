@@ -5,10 +5,12 @@
 }: {
   programs.zsh = {
     enable = true;
-    autocd = true;
+    autocd = false;
     enableCompletion = false;
-    initExtra = ''
-      bindkey  "^[[H"   beginning-of-line
-      bindkey  "^[[F"   end-of-line'';
+    initContent = ''
+      bindkey  "^[[H"      beginning-of-line
+      bindkey  "^[[F"      end-of-line
+      bindkey  "^[[1;5D"   backward-word
+      bindkey  "^[[1;5C"   forward-word'';
   };
 }
