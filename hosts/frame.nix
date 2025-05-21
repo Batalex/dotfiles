@@ -103,6 +103,10 @@ in {
           lxc exec dev --  sudo -u ubuntu -i bash
         fi
       }
+
+      charm-resources(){
+        if [ -f metadata.yaml ]; then METADATA_FILE=metadata.yaml; else METADATA_FILE=charmcraft.yaml; fi; echo -n $(yq eval ".resources | to_entries | map(select(.value.upstream-source != null) | \"--resource \" + .key + \"=\" + .value.upstream-source) | join (\" \")" $METADATA_FILE)
+      }
     '';
   };
 }
