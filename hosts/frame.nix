@@ -35,7 +35,7 @@ in {
 
     awscli
     eksctl
-    azure-cli
+    # azure-cli
 
     (nixGLWrap firefox)
 

@@ -61,5 +61,6 @@
   home.packages = with pkgs; [
     age
     tldr
+    rip2
   ];
 }
