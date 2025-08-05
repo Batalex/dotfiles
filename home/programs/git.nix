@@ -5,7 +5,7 @@
     userName = "Alex Batisse";
     includes = [
       {
-        condition = "gitdir:~/work/";
+        condition = "gitdir:~/dev/";
         contents.user.email = "alex.batisse@canonical.com";
       }
     ];

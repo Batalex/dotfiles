@@ -37,10 +37,11 @@ in {
     eksctl
     # azure-cli
 
-    (nixGLWrap firefox)
-
-    (nixGLWrap ghostty)
     craft-ls.packages.x86_64-linux.default
+
+    (nixGLWrap firefox)
+    (nixGLWrap ghostty)
+    obs-studio
 
     # Package exceptions:
     # yq: seems that there are some differences between the snap and the nix package.
