@@ -41,7 +41,7 @@ in {
 
     (nixGLWrap firefox)
     (nixGLWrap ghostty)
-    obs-studio
+    (nixGLWrap obs-studio)
 
     # Package exceptions:
     # yq: seems that there are some differences between the snap and the nix package.
