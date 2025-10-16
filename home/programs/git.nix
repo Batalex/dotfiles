@@ -49,6 +49,7 @@
     settings = {
       os.copyToClipboardCmd = ''printf "\033]52;c;$(printf {{text}} | base64 -w 0)\a" > /dev/tty'';
       git.autoStageResolvedConflicts = false;
+      git.overrideGpg = true;
     };
   };
 
