@@ -59,7 +59,7 @@ in {
     initContent = ''
       ubuntu-vm() {
         BASE="''${BASE:-noble}"
-        VM_NAME="''${VM_NAME:-ubuntu-''${BASE}-$(head -c 2 /dev/urandom | xxd -p -c 32)}"
+        VM_NAME="''${VM_NAME:-ubuntu-$(head -c 2 /dev/urandom | xxd -p -c 32)}"
         DISK="''${DISK:-30}"
         CPU="''${CPU:-8}"
         MEM="''${MEM:-16}"
@@ -70,7 +70,7 @@ in {
           -c limits.cpu="''${CPU}" -c limits.memory="''${MEM}GiB" -d root,size="''${DISK}GiB"
 
         # Mount the $HOME/data directory -> /home/ubuntu/data in the container
-        lxc config device add "''${VM_NAME}" datadir disk source="''${HOME}/work" path=/home/ubuntu/work readonly=false
+        lxc config device add "''${VM_NAME}" datadir disk source="''${HOME}/dev" path=/home/ubuntu/work readonly=false
 
         # Start the container, wait for cloud-init to finish
         lxc start "''${VM_NAME}"
