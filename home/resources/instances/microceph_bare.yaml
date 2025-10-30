@@ -1,0 +1,7 @@
+#cloud-config
+package_upgrade: true
+snap:
+  commands:
+    0: snap install microceph
+    1: sudo microceph cluster bootstrap
+    2: sudo microceph disk add loop,1G,3

@@ -70,8 +70,9 @@ in {
           -c limits.cpu="''${CPU}" -c limits.memory="''${MEM}GiB" -d root,size="''${DISK}GiB"
 
         # Mount the $HOME/data directory -> /home/ubuntu/data in the container
-        lxc config device add "''${VM_NAME}" datadir disk source="''${HOME}/dev" path=/home/ubuntu/work readonly=false
+        lxc config device add "''${VM_NAME}" datadir disk source="''${HOME}/dev" path=/home/ubuntu/dev readonly=false
 
+        lxc config set dev cloud-init.user-data - < ~/.config/home-manager/home/resources/instances/basic.yaml
         # Start the container, wait for cloud-init to finish
         lxc start "''${VM_NAME}"
 
@@ -107,6 +108,30 @@ in {
 
       charm-resources(){
         if [ -f metadata.yaml ]; then METADATA_FILE=metadata.yaml; else METADATA_FILE=charmcraft.yaml; fi; echo -n $(yq eval ".resources | to_entries | map(select(.value.upstream-source != null) | \"--resource \" + .key + \"=\" + .value.upstream-source) | join (\" \")" $METADATA_FILE)
+      }
+
+      create_ceph(){
+        lxc init --vm ubuntu:noble ceph -c limits.cpu=4 -c limits.memory=2GB -d root,size=10GB
+        lxc config set ceph cloud-init.user-data - < ~/.config/home-manager/home/resources/instances/microceph_rgw.yaml
+        lxc start ceph
+        while ! lxc exec ceph -- id -u ubuntu &>/dev/null; do sleep 0.5; done
+        lxc exec ceph -- cloud-init status --wait
+
+        echo "Object storage is ready"
+      }
+
+      create_ceph_tls(){
+        lxc init --vm ubuntu:noble ceph-tls -c limits.cpu=4 -c limits.memory=2GB -d root,size=10GB
+        lxc config set ceph-tls cloud-init.user-data - < ~/.config/home-manager/home/resources/instances/microceph_bare.yaml
+        lxc start ceph-tls
+        while ! lxc exec ceph-tls -- id -u ubuntu &>/dev/null; do sleep 0.5; done
+        lxc exec ceph-tls -- cloud-init status --wait
+
+        echo "Enabling RGW with TLS"
+        lxc file push ~/.config/home-manager/home/resources/scripts/microceph_rgw_tls.sh ceph-tls/home/ubuntu/microceph_rgw_tls.sh
+        lxc exec ceph-tls -- sudo -u ubuntu -i bash microceph_rgw_tls.sh
+
+        echo "Object storage is ready"
       }
     '';
   };
