@@ -1,22 +1,12 @@
 {...}: {
   programs.git = {
     enable = true;
-    userEmail = "alexandre.batisse@hey.com";
-    userName = "Alex Batisse";
     includes = [
       {
         condition = "gitdir:~/dev/";
         contents.user.email = "alex.batisse@canonical.com";
       }
     ];
-    aliases = {
-      st = "status";
-      fa = "fetch --all --prune";
-      co = "checkout";
-      ci = "commit";
-      wt = "worktree";
-      cp = "cherry-pick";
-    };
     ignores = [
       ".tox"
       ".nox"
@@ -25,13 +15,18 @@
       ".envrc"
       ".direnv"
     ];
-    delta = {
-      enable = true;
-      options = {
-        dark = true;
+    settings = {
+      user.email = "alexandre.batisse@hey.com";
+      user.name = "Alex Batisse";
+      alias = {
+        st = "status";
+        fa = "fetch --all --prune";
+        co = "checkout";
+        ci = "commit";
+        wt = "worktree";
+        cp = "cherry-pick";
       };
-    };
-    extraConfig = {
+
       gpg = {
         format = "ssh";
         ssh = {
@@ -58,4 +53,12 @@
   };
 
   programs.gh.enable = true;
+
+  programs.delta = {
+    enable = true;
+    enableGitIntegration = true;
+    options = {
+      dark = true;
+    };
+  };
 }
