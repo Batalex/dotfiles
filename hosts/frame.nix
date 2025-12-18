@@ -111,7 +111,7 @@ in {
       }
 
       create_ceph(){
-        lxc init --vm ubuntu:noble ceph -c limits.cpu=4 -c limits.memory=2GB -d root,size=10GB
+        lxc init ubuntu:noble ceph -c limits.cpu=4 -c limits.memory=2GB -d root,size=10GB
         lxc config set ceph cloud-init.user-data - < ~/.config/home-manager/home/resources/instances/microceph_rgw.yaml
         lxc start ceph
         while ! lxc exec ceph -- id -u ubuntu &>/dev/null; do sleep 0.5; done
@@ -121,7 +121,7 @@ in {
       }
 
       create_ceph_tls(){
-        lxc init --vm ubuntu:noble ceph-tls -c limits.cpu=4 -c limits.memory=2GB -d root,size=10GB
+        lxc init ubuntu:noble ceph-tls -c limits.cpu=4 -c limits.memory=2GB -d root,size=10GB
         lxc config set ceph-tls cloud-init.user-data - < ~/.config/home-manager/home/resources/instances/microceph_bare.yaml
         lxc start ceph-tls
         while ! lxc exec ceph-tls -- id -u ubuntu &>/dev/null; do sleep 0.5; done
