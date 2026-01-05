@@ -7,6 +7,7 @@
     enable = true;
     autocd = false;
     enableCompletion = false;
+    dotDir = config.home.homeDirectory;
     initContent = ''
       bindkey  "^[[H"      beginning-of-line
       bindkey  "^[[F"      end-of-line

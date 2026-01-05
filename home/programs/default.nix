@@ -43,7 +43,10 @@
 
   programs.ripgrep.enable = true;
 
-  programs.ssh.enable = true;
+  programs.ssh = {
+    enable = true;
+    enableDefaultConfig = false;
+  };
 
   programs.yazi = {
     enable = true;
