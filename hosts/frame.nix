@@ -1,22 +1,8 @@
 {
   pkgs,
-  lib,
   craft-ls,
   ...
-}: let
-  nixGLWrap = pkg:
-    pkgs.runCommand "${pkg.name}-nixgl-wrapper" {} ''
-      mkdir $out
-      ln -s ${pkg}/* $out
-      rm $out/bin
-      mkdir $out/bin
-      for bin in ${pkg}/bin/*; do
-       wrapped_bin=$out/bin/$(basename $bin)
-       echo "exec ${lib.getExe pkgs.nixgl.nixGLIntel} $bin \$@" > $wrapped_bin
-       chmod +x $wrapped_bin
-      done
-    '';
-in {
+}: {
   home.username = "alex";
   home.homeDirectory = "/home/alex";
   xdg.enable = true;
@@ -34,14 +20,14 @@ in {
     kubectl
 
     awscli
-    eksctl
+    # eksctl
     # azure-cli
 
     craft-ls.packages.x86_64-linux.default
 
-    (nixGLWrap firefox)
-    (nixGLWrap ghostty)
-    (nixGLWrap obs-studio)
+    firefox
+    ghostty
+    obs-studio
 
     # Package exceptions:
     # yq: seems that there are some differences between the snap and the nix package.
