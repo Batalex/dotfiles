@@ -4,13 +4,9 @@
   inputs = {
     # Specify the source of Home Manager and Nixpkgs.
     nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
-    nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-25.05";
+    nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-25.11";
     home-manager = {
       url = "github:nix-community/home-manager";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-    nixgl = {
-      url = "github:nix-community/nixGL";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     craft-ls = {
@@ -23,13 +19,11 @@
     nixpkgs,
     nixpkgs-stable,
     home-manager,
-    nixgl,
     craft-ls,
     ...
   }: let
     pkgs_with_nixgl = import nixpkgs {
       system = "x86_64-linux";
-      overlays = [nixgl.overlay];
       config.allowUnfree = true;
     };
     pkgs-stable = nixpkgs-stable.legacyPackages.x86_64-linux;
