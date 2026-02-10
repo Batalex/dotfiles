@@ -13,10 +13,10 @@
   ];
 
   programs.zsh.shellAliases = {
-    ae = "source venv/bin/activate";
+    ae = "source .venv/bin/activate";
     de = "deactivate";
-    envc = "python -m venv venv";
-    pipr = "pip install -r requirements.txt";
+    envc = "uv venv";
+    pipr = "uv pip install -r requirements.txt";
   };
 }
 # TODO: Create a uv module to manage tools
