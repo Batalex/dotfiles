@@ -11,8 +11,6 @@
 
   imports = [../home];
 
-  services.ssh-agent.enable = true;
-
   home.packages = with pkgs; [
     wl-clipboard
 
@@ -33,6 +31,14 @@
     # yq: seems that there are some differences between the snap and the nix package.
     # mattermost-desktop: I don't want the hassle of messing with AppArmor profiles compared to the snap
   ];
+
+  programs.ssh.matchBlocks = {
+    "*.canonical.is" = {
+      proxyCommand = "/snap/charmed-cloudflared/current/usr/bin/cloudflared access ssh --hostname %h";
+      identityFile = "/home/alex/.ssh/canonicalis";
+      user = "abatisse";
+    };
+  };
 
   programs.zsh = {
     shellAliases = {
