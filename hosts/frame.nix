@@ -8,6 +8,7 @@
   xdg.enable = true;
   xdg.mime.enable = true;
   targets.genericLinux.enable = true;
+  services.ssh-agent.enable = true;
 
   imports = [../home];
 
