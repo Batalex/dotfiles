@@ -6,7 +6,7 @@
   commitmono-typeface = pkgs.callPackage ./packages/fonts/commitmono/default.nix {};
   dag = config.lib.dag;
 in {
-  home.stateVersion = "23.11";
+  home.stateVersion = "25.11";
 
   home.activation.report-changes = dag.entryAnywhere ''
     ${pkgs.nvd}/bin/nvd diff $oldGenPath $newGenPath
