@@ -16,6 +16,7 @@
     wl-clipboard
 
     terraform
+    terraform-docs
     kubectl
 
     awscli
