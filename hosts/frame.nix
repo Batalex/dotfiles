@@ -17,6 +17,7 @@
 
     terraform
     terraform-docs
+    tflint
     kubectl
 
     awscli

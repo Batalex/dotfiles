@@ -66,3 +66,8 @@ language-servers = [
 name = "hcl"
 scope = "source.tf"
 formatter = { command = "terraform", args = ["fmt", "-"] }
+
+[[language]]
+name = "bash"
+scope = "source.sh"
+formatter = { command = "shfmt", args = ["-i", "4", "-"] }

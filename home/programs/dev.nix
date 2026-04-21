@@ -10,6 +10,9 @@
 
     # rust
     rustup
+
+    # bash
+    shfmt
   ];
 
   programs.zsh.shellAliases = {
