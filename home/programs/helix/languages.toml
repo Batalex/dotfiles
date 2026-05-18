@@ -13,6 +13,11 @@ command = "nixd"
 args = []
 config = {}
 
+[language-server.tflint]
+command = "tflint"
+args = ["--langserver"]
+config = {}
+
 [[language]]
 name = "python"
 roots = ["pyproject.toml"]
@@ -66,6 +71,9 @@ language-servers = [
 name = "hcl"
 scope = "source.tf"
 formatter = { command = "terraform", args = ["fmt", "-"] }
+language-servers = [
+  { name = "tflint", except-features = [] },
+]
 
 [[language]]
 name = "bash"
