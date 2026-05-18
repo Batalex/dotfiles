@@ -51,6 +51,14 @@
           craft-ls = craft-ls;
         };
       };
+      zeit = home-manager.lib.homeManagerConfiguration {
+        pkgs = pkgs_with_nixgl;
+        modules = [hosts/zeit.nix];
+        extraSpecialArgs = {
+          inherit pkgs-stable;
+          craft-ls = craft-ls;
+        };
+      };
     };
   };
 }
