@@ -12,3 +12,6 @@ macos-option-as-alt = left
 
 # Behavior
 copy-on-select = true
+
+command = zsh
+shell-integration-features = ssh-env,ssh-terminfo
