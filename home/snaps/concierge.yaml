@@ -1,0 +1,38 @@
+juju:
+  channel: 3.6/stable
+  model-defaults:
+    logging-config: <root>=INFO; unit=DEBUG
+
+providers:
+  k8s:
+    enable: true
+    bootstrap: false
+    channel: 1.35-classic/stable
+    features:
+      local-storage:
+      load-balancer:
+        enabled: true
+        l2-mode: true
+        cidrs: 10.64.0.0/16
+    bootstrap-constraints:
+      root-disk: 4G
+
+  lxd:
+    enable: true
+    bootstrap: false
+    channel: 6/stable
+
+host:
+  snaps:
+    charmcraft:
+      channel: latest/stable
+    rockcraft:
+      channel: latest/stable
+    snapcraft:
+      channel: latest/stable
+    kubectl:
+      channel: latest/stable
+    yq:
+      channel: latest/stable
+    aws-cli:
+      channel: latest/stable
