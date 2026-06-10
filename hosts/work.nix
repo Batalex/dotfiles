@@ -67,7 +67,7 @@
         # Mount the $HOME/data directory -> /home/ubuntu/data in the container
         lxc config device add "''${VM_NAME}" datadir disk source="''${HOME}/dev" path=/home/ubuntu/dev readonly=false
 
-        lxc config set dev cloud-init.user-data - < ~/.config/home-manager/home/resources/instances/basic.yaml
+        lxc config set dev cloud-init.user-data - < ~/.config/dotfiles/home/resources/instances/basic.yaml
         # Start the container, wait for cloud-init to finish
         lxc start "''${VM_NAME}"
 
@@ -107,7 +107,7 @@
 
       create_ceph(){
         lxc init ubuntu:noble ceph -c limits.cpu=4 -c limits.memory=2GB -d root,size=10GB
-        lxc config set ceph cloud-init.user-data - < ~/.config/home-manager/home/resources/instances/microceph_rgw.yaml
+        lxc config set ceph cloud-init.user-data - < ~/.config/dotfiles/home/resources/instances/microceph_rgw.yaml
         lxc start ceph
         while ! lxc exec ceph -- id -u ubuntu &>/dev/null; do sleep 0.5; done
         lxc exec ceph -- cloud-init status --wait
@@ -117,13 +117,13 @@
 
       create_ceph_tls(){
         lxc init ubuntu:noble ceph-tls -c limits.cpu=4 -c limits.memory=2GB -d root,size=10GB
-        lxc config set ceph-tls cloud-init.user-data - < ~/.config/home-manager/home/resources/instances/microceph_bare.yaml
+        lxc config set ceph-tls cloud-init.user-data - < ~/.config/dotfiles/home/resources/instances/microceph_bare.yaml
         lxc start ceph-tls
         while ! lxc exec ceph-tls -- id -u ubuntu &>/dev/null; do sleep 0.5; done
         lxc exec ceph-tls -- cloud-init status --wait
 
         echo "Enabling RGW with TLS"
-        lxc file push ~/.config/home-manager/home/resources/scripts/microceph_rgw_tls.sh ceph-tls/home/ubuntu/microceph_rgw_tls.sh
+        lxc file push ~/.config/dotfiles/home/resources/scripts/microceph_rgw_tls.sh ceph-tls/home/ubuntu/microceph_rgw_tls.sh
         lxc exec ceph-tls -- sudo -u ubuntu -i bash microceph_rgw_tls.sh
 
         echo "Object storage is ready"
