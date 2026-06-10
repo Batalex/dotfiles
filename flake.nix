@@ -43,14 +43,6 @@
           craft-ls = craft-ls;
         };
       };
-      frame = home-manager.lib.homeManagerConfiguration {
-        pkgs = pkgs_with_nixgl;
-        modules = [hosts/frame.nix];
-        extraSpecialArgs = {
-          inherit pkgs-stable;
-          craft-ls = craft-ls;
-        };
-      };
       work = home-manager.lib.homeManagerConfiguration {
         pkgs = pkgs_with_nixgl;
         modules = [hosts/work.nix];
