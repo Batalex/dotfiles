@@ -20,10 +20,6 @@
     tflint
     kubectl
 
-    awscli
-    # eksctl
-    # azure-cli
-
     craft-ls.packages.x86_64-linux.default
 
     firefox
