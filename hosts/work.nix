@@ -31,7 +31,7 @@
     # mattermost-desktop: I don't want the hassle of messing with AppArmor profiles compared to the snap
   ];
 
-  programs.ssh.matchBlocks = {
+  programs.ssh.settings = {
     "*.canonical.is" = {
       proxyCommand = "/snap/charmed-cloudflared/current/usr/bin/cloudflared access ssh --hostname %h";
       identityFile = "/home/alex.batisse@canonical.com/.ssh/canonicalis";
@@ -48,8 +48,20 @@
       tf = "terraform";
     };
     initContent = ''
-      ubuntu-vm() {
-        BASE="''${BASE:-noble}"
+      :py() {
+        cp ~/dev/resources/.envrc .
+        cp ~/dev/resources/noxfile.py .
+        nox -s dev
+        direnv allow
+      }
+
+      :workshop() {
+        cp ~/dev/resources/workshop.yaml .
+        cp -r ~/dev/resources/.workshop .
+      }
+
+      :vm() {
+        BASE="''${BASE:-resolute}"
         VM_NAME="''${VM_NAME:-ubuntu-$(head -c 2 /dev/urandom | xxd -p -c 32)}"
         DISK="''${DISK:-30}"
         CPU="''${CPU:-8}"
@@ -86,32 +98,30 @@
         fi
       }
 
-      ubuntu-dev() {
+      :dev() {
         export EPHEMERAL=false
         export VM_NAME=dev
         export DISK=60
         if [[ $(lxc list -c n | grep -Fc dev) -eq 0 ]]; then
-          ubuntu-vm
+          :vm
         else
           lxc exec dev --  sudo -u ubuntu -i bash
         fi
       }
 
-      charm-resources(){
+      :resources(){
         if [ -f metadata.yaml ]; then METADATA_FILE=metadata.yaml; else METADATA_FILE=charmcraft.yaml; fi; echo -n $(yq eval ".resources | to_entries | map(select(.value.upstream-source != null) | \"--resource \" + .key + \"=\" + .value.upstream-source) | join (\" \")" $METADATA_FILE)
       }
 
-      create_ceph(){
+      :ceph(){
         lxc init ubuntu:noble ceph -c limits.cpu=4 -c limits.memory=2GB -d root,size=10GB
         lxc config set ceph cloud-init.user-data - < ~/.config/dotfiles/home/resources/instances/microceph_rgw.yaml
         lxc start ceph
         while ! lxc exec ceph -- id -u ubuntu &>/dev/null; do sleep 0.5; done
         lxc exec ceph -- cloud-init status --wait
-
-        echo "Object storage is ready"
       }
 
-      create_ceph_tls(){
+      :ceph_tls(){
         lxc init ubuntu:noble ceph-tls -c limits.cpu=4 -c limits.memory=2GB -d root,size=10GB
         lxc config set ceph-tls cloud-init.user-data - < ~/.config/dotfiles/home/resources/instances/microceph_bare.yaml
         lxc start ceph-tls
@@ -121,8 +131,6 @@
         echo "Enabling RGW with TLS"
         lxc file push ~/.config/dotfiles/home/resources/scripts/microceph_rgw_tls.sh ceph-tls/home/ubuntu/microceph_rgw_tls.sh
         lxc exec ceph-tls -- sudo -u ubuntu -i bash microceph_rgw_tls.sh
-
-        echo "Object storage is ready"
       }
     '';
   };
