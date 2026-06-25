@@ -3,6 +3,10 @@ command = "pyright-langserver"
 args = ["--stdio"]
 config = {}
 
+[language-server.zuban]
+command = "zuban"
+args = ["server"]
+
 [language-server.vale]
 command = "vale-ls"
 args = []
@@ -25,7 +29,7 @@ formatter = { command = "ruff", args = ["format", "--quiet", "-"] }
 auto-format = true
 rulers = [89]
 language-servers = [
-  { name = "pyright", except-features = [] },
+  { name = "zuban", except-features = [] },
   # { name = "vale", except-features = [] },
 ]
 

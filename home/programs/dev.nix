@@ -5,8 +5,9 @@
     # python
     pyright
     python312Packages.nox
-    uv
     ruff
+    uv
+    zuban
 
     # rust
     rustup
